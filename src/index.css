@@ -1,0 +1,441 @@
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand Colors - Odoo & Brightloop Inspired */
+  --brand-primary: #714B67;
+  --brand-primary-hover: #5d3d54;
+  --brand-primary-light: #f5eff3;
+  --brand-primary-border: #d8b8ce;
+  --brand-secondary: #00A09D;
+  --brand-secondary-hover: #008481;
+  --brand-secondary-light: #e6f6f5;
+
+  /* Neutrals & Surfaces - Light Mode */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-muted: #e2e8f0;
+  --border-color: #e2e8f0;
+  --border-focus: #714B67;
+
+  /* Typography */
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Status Colors */
+  --status-draft-bg: #f1f5f9;
+  --status-draft-text: #475569;
+  --status-quotation-bg: #eff6ff;
+  --status-quotation-text: #2563eb;
+  --status-confirmed-bg: #fdf4ff;
+  --status-confirmed-text: #a855f7;
+  --status-active-bg: #ecfdf5;
+  --status-active-text: #059669;
+  --status-paid-bg: #ecfdf5;
+  --status-paid-text: #059669;
+  --status-overdue-bg: #fef2f2;
+  --status-overdue-text: #dc2626;
+  --status-paused-bg: #fffbeb;
+  --status-paused-text: #d97706;
+  --status-closed-bg: #f3f4f6;
+  --status-closed-text: #6b7280;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg-app: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1f2937;
+  --bg-subtle: #1e293b;
+  --bg-muted: #334155;
+  --border-color: #2e384d;
+  --border-focus: #9d6b90;
+
+  --text-main: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-inverse: #0b0f19;
+
+  --brand-primary: #9d6b90;
+  --brand-primary-hover: #b47da6;
+  --brand-primary-light: rgba(157, 107, 144, 0.18);
+  --brand-primary-border: rgba(157, 107, 144, 0.4);
+  --brand-secondary: #14b8a6;
+  --brand-secondary-hover: #2dd4bf;
+  --brand-secondary-light: rgba(20, 184, 166, 0.15);
+
+  --status-draft-bg: #1e293b;
+  --status-draft-text: #94a3b8;
+  --status-quotation-bg: rgba(37, 99, 235, 0.2);
+  --status-quotation-text: #60a5fa;
+  --status-confirmed-bg: rgba(168, 85, 247, 0.2);
+  --status-confirmed-text: #c084fc;
+  --status-active-bg: rgba(5, 150, 105, 0.2);
+  --status-active-text: #34d399;
+  --status-paid-bg: rgba(5, 150, 105, 0.2);
+  --status-paid-text: #34d399;
+  --status-overdue-bg: rgba(220, 38, 38, 0.2);
+  --status-overdue-text: #f87171;
+  --status-paused-bg: rgba(217, 119, 6, 0.2);
+  --status-paused-text: #fbbf24;
+  --status-closed-bg: #1f2937;
+  --status-closed-text: #9ca3af;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Base Utility Classes */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: var(--font-sans);
+  outline: none;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--brand-primary-light);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--brand-primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-subtle);
+  border-color: var(--brand-primary-border);
+}
+
+.btn-teal {
+  background-color: var(--brand-secondary);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-teal:hover:not(:disabled) {
+  background-color: var(--brand-secondary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: #dc2626;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-draft { background-color: var(--status-draft-bg); color: var(--status-draft-text); }
+.badge-quotation { background-color: var(--status-quotation-bg); color: var(--status-quotation-text); }
+.badge-confirmed { background-color: var(--status-confirmed-bg); color: var(--status-confirmed-text); }
+.badge-active { background-color: var(--status-active-bg); color: var(--status-active-text); }
+.badge-paid { background-color: var(--status-paid-bg); color: var(--status-paid-text); }
+.badge-overdue { background-color: var(--status-overdue-bg); color: var(--status-overdue-text); animation: pulse-soft 2s infinite; }
+.badge-paused { background-color: var(--status-paused-bg); color: var(--status-paused-text); }
+.badge-closed { background-color: var(--status-closed-bg); color: var(--status-closed-text); }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Cards & Containers */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.data-table th {
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--brand-primary-light);
+}
+
+/* Odoo-style Status Pipeline Chevron Bar */
+.status-pipeline {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.pipeline-step {
+  flex: 1;
+  text-align: center;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  position: relative;
+  transition: all var(--transition-fast);
+  background: transparent;
+  cursor: pointer;
+  border-right: 1px solid var(--border-color);
+}
+
+.pipeline-step:last-child {
+  border-right: none;
+}
+
+.pipeline-step.active {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+.pipeline-step.completed {
+  background-color: var(--brand-secondary-light);
+  color: var(--brand-secondary);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 200ms ease;
+}
+
+.modal-content {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  padding: 24px;
+  animation: scaleIn 200ms ease;
+}
+
+.modal-content.modal-lg {
+  max-width: 900px;
+}
+
+.modal-content.modal-xl {
+  max-width: 1100px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Printable Invoice Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print, header, nav, .btn-primary, .btn-secondary, .modal-overlay {
+    display: none !important;
+  }
+  .printable-invoice-container {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
