@@ -1,27 +1,23 @@
-# Brightloop Subscription & Invoicing Platform (Make_A_Ton)
+# Member 2: Subscription Engine & Product Catalog Management
 
-This repository contains the modular components for the **Unified Subscription Management, Automated Invoicing & Recurring Billing System**.
+## 👤 Owner: Team Member 2 (Subscriptions & Catalog Specialist)
 
----
+### 📦 Files Managed
+- `SubscriptionsView.jsx` — Subscription lifecycle (Create, Upgrade/Downgrade, Pause, Resume, Cancel, Auto-renew toggles)
+- `CatalogView.jsx` — Product & Recurring Plans Catalog (Starter/Pro/Enterprise plans, Billing intervals, Add-ons, Tiered pricing)
+- `index.js` — Public module exports
 
-## 👥 Contributors & Modules
+### 🚀 Git Branch & Commit Instructions for Member 2
+```bash
+# 1. Switch to your dedicated branch
+git checkout -b feature/member2-subscriptions
 
-### 👤 Member 1: Executive Analytics, Navigation & Real-time Notifications
-- **Owner**: Rayhan (`reyyhann77`)
-- **Files**:
-  - `DashboardView.jsx` — Executive KPI Dashboard (MRR, ARR, Churn, Active Subscriptions, Growth metrics & charts)
-  - `Navbar.jsx` — Main Application Navigation, Next Billing Day Countdown clock, Staff quick switcher
-  - `NotificationToast.jsx` — Dynamic toasts for billing events, payments, cancellations
+# 2. Stage your files
+git add src/modules/member2_subscriptions/
 
-### 👤 Member 3: Automated Invoicing Engine & "Billing Day" Run
-- **Owner**: Sreedhar (`sreedharhari2006-code`)
-- **Files**:
-  - `InvoicesView.jsx` — Invoices Ledger (Draft, Open, Paid, Overdue, Filters, Line item breakdowns)
-  - `BillingDayModal.jsx` — Automated Billing Day Simulation (Sub-second batch generation, card charging, proration calculation, audit trail)
-  - `InvoicePrintModal.jsx` — Professional Printable Tax Invoice modal with QR code, tax breakdown (GST/VAT), download/print triggers
+# 3. Commit with your author info
+git commit -m "feat(subscriptions): implement subscription lifecycle management and recurring product catalog"
 
----
-
-## 📦 Exported Components (`index.js`)
-- `DashboardView`, `Navbar`, `NotificationToast`
-- `InvoicesView`, `BillingDayModal`, `InvoicePrintModal`
+# 4. Push to remote
+git push origin feature/member2-subscriptions
+```
